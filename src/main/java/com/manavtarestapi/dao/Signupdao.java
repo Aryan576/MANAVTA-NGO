@@ -24,4 +24,18 @@ public class Signupdao {
         List<SignupBean> user= stmt.query("select * from signup", BeanPropertyRowMapper.newInstance(SignupBean.class));
         return user;
     }
+
+    public SignupBean login(String email, String password) {
+
+        SignupBean signupBean=null;
+        try {
+                    signupBean=stmt.queryForObject("select * from user where email=? and password=?",BeanPropertyRowMapper.newInstance(SignupBean.class),new Object[] {email,password});
+
+        }catch (Exception e)
+        {
+            System.out.println("No such users");
+        }
+
+        return signupBean;
+    }
 }
