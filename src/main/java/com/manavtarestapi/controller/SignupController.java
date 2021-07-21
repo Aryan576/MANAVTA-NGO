@@ -23,7 +23,7 @@ public class SignupController {
         signupdao.signup(signupBean);
         resposne.setData(signupBean);
         resposne.setMsg("User Signup Success");
-        resposne.setStatus(200);
+       /* resposne.setStatus(200);*/
 
         return resposne;
 

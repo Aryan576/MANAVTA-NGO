@@ -56,7 +56,7 @@ public class Hospitaldao {
             addHospitalBean = stmt.queryForObject("select * from hospital where hospitalid=?", BeanPropertyRowMapper.newInstance(AddHospitalBean.class), new Object[]{hospitalid});
 
         } catch (Exception e) {
-            System.out.println("Role not  Found" + e.getMessage());
+            System.out.println( e.getMessage());
         }
 
         return addHospitalBean;
