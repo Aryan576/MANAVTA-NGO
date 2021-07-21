@@ -14,6 +14,6 @@ public class SignupBean {
     private String dob;
     private  String password;
     private  String gender;
-    private int roleid;
+    private String roleid;
 
 }
