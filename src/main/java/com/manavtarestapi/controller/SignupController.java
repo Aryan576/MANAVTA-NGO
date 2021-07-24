@@ -20,11 +20,18 @@ public class SignupController {
     public ResponseBean<SignupBean> signup(@RequestBody SignupBean signupBean) {
         ResponseBean resposne = new ResponseBean();
 
-        signupdao.signup(signupBean);
-        resposne.setData(signupBean);
-        resposne.setMsg("User Signup Success");
-       /* resposne.setStatus(200);*/
+        if(signupdao.getUserByEmail(signupBean.getEmail()) !=null)
+        {
+                resposne.setMsg("You Are Already Rgister");
+                resposne.setStatus(201);
+        }
+        else {
 
+            signupdao.signup(signupBean);
+            resposne.setData(signupBean);
+            resposne.setMsg("User Signup Success");
+            resposne.setStatus(200);
+        }
         return resposne;
 
     }
