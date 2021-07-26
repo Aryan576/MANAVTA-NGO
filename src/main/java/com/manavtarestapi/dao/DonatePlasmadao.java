@@ -17,8 +17,8 @@ public class DonatePlasmadao {
 
     public void addPlasma(DonatePlasmaBean donatePlasmaBean) {
 
-        stmt.update("insert into plasma (name, age, gender, bloodgroup, weight,DateofcovidPositive,DateofcovidNegative,city,state,phonenumber) values(?,?,?,?,?,?,?,?,?,?)",
-                donatePlasmaBean.getName(), donatePlasmaBean.getAge(), donatePlasmaBean.getGender(), donatePlasmaBean.getBloodgroup(), donatePlasmaBean.getWeight(), donatePlasmaBean.getDateofcovidPositive(), donatePlasmaBean.getDateofcovidNegative(),
+        stmt.update("insert into plasma (name, age, gender, bloodgroup, weight,dateofcovidpositive,dateofcovidnegative,city,state,phonenumber) values(?,?,?,?,?,?,?,?,?,?)",
+                donatePlasmaBean.getName(), donatePlasmaBean.getAge(), donatePlasmaBean.getGender(), donatePlasmaBean.getBloodgroup(), donatePlasmaBean.getWeight(), donatePlasmaBean.getDateofcovidpositive(), donatePlasmaBean.getDateofcovidnegative(),
                 donatePlasmaBean.getCity(), donatePlasmaBean.getState(), donatePlasmaBean.getPhonenumber()
 
         );
@@ -60,7 +60,7 @@ public class DonatePlasmadao {
     public DonatePlasmaBean updatePlasma(DonatePlasmaBean donatePlasma) {
         stmt.update("update plasma set name=?, age=?, gender=?, bloodgroup=?, weight=?,DateofcovidPositive=?,DateofcovidNegative=?,city=?,state=?,phonenumber=? where plasmaid=?",
                 donatePlasma.getName(),donatePlasma.getAge(),donatePlasma.getGender(),donatePlasma.getBloodgroup(),donatePlasma.getWeight(),
-                donatePlasma.getDateofcovidPositive(),donatePlasma.getDateofcovidNegative(),donatePlasma.getCity(), donatePlasma.getState(),donatePlasma.getPhonenumber(),donatePlasma.getPlasmaid()
+                donatePlasma.getDateofcovidpositive(),donatePlasma.getDateofcovidnegative(),donatePlasma.getCity(), donatePlasma.getState(),donatePlasma.getPhonenumber(),donatePlasma.getPlasmaid()
                 );
 
                 return donatePlasma;
