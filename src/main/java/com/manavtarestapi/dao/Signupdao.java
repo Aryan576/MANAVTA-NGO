@@ -21,18 +21,17 @@ public class Signupdao {
     }
 
     public List<SignupBean> listUser() {
-        List<SignupBean> user= stmt.query("select * from signup", BeanPropertyRowMapper.newInstance(SignupBean.class));
+        List<SignupBean> user = stmt.query("select * from signup", BeanPropertyRowMapper.newInstance(SignupBean.class));
         return user;
     }
 
     public SignupBean login(String email, String password) {
 
-        SignupBean signupBean=null;
+        SignupBean signupBean = null;
         try {
-                    signupBean=stmt.queryForObject("select * from user where email=? and password=?",BeanPropertyRowMapper.newInstance(SignupBean.class),new Object[] {email,password});
+            signupBean = stmt.queryForObject("select * from signup where email=? and password=?", BeanPropertyRowMapper.newInstance(SignupBean.class), new Object[]{email, password});
 
-        }catch (Exception e)
-        {
+        } catch (Exception e) {
             System.out.println("No such users");
         }
 
@@ -40,11 +39,11 @@ public class Signupdao {
     }
 
     public SignupBean getUserByEmail(String email) {
-        SignupBean signupBean=null;
+        SignupBean signupBean = null;
         try {
             List<SignupBean> signup = stmt.query("select * from signup where email = ?",
 
-                   BeanPropertyRowMapper.newInstance(SignupBean.class),  new Object[] { email });
+                    BeanPropertyRowMapper.newInstance(SignupBean.class), new Object[]{email});
 
             if (signup.size() != 0) {
                 signupBean = signup.get(0);
@@ -56,5 +55,29 @@ public class Signupdao {
         }
 
         return signupBean;
+    }
+
+    public SignupBean getUserByID(int id) {
+        SignupBean signupBean = null;
+        try {
+            List<SignupBean> sign = stmt.query("select * from signup where id=?", BeanPropertyRowMapper.newInstance(SignupBean.class));
+
+            if (sign.size() != 0) {
+                signupBean = sign.get(0);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+      return signupBean;
+    }
+
+
+
+
+
+    public void updatepassword(SignupBean signupBean) {
+        stmt.update("update signup set password = ? where id = ?", signupBean.getPassword(), signupBean.getId());
     }
 }

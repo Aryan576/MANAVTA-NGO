@@ -67,4 +67,31 @@ public class SignupController {
         return resposne;
     }
 
+    @PutMapping("updatepassword")
+    public  ResponseBean<SignupBean> updatepassword(@RequestParam("email") String email,@RequestParam("password") String password)
+    {
+
+        SignupBean signupBean=signupdao.getUserByEmail(email);
+
+        ResponseBean<SignupBean> response=new ResponseBean<>();
+
+
+        if(signupBean == null){
+            response.setMsg("User not Found");
+            response.setStatus(201);
+        }else{
+            signupBean.setPassword(password);
+            signupdao.updatepassword(signupBean);
+            response.setData(signupBean);
+            response.setMsg("PasswordUpdated");
+            response.setStatus(200);
+        }
+
+
+
+
+
+
+            return response;
+    }
 }
