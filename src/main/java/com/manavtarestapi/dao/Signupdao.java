@@ -42,7 +42,7 @@ public class Signupdao {
     public SignupBean getUserByEmail(String email) {
         SignupBean signupBean=null;
         try {
-            signupBean = stmt.queryForObject("select * from users where email = ?",
+            signupBean = stmt.queryForObject("select * from signup where email = ?",
 
                    BeanPropertyRowMapper.newInstance(SignupBean.class),  new Object[] { email });
         } catch (Exception e) {

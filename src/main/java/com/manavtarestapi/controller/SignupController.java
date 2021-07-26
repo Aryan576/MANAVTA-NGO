@@ -20,12 +20,10 @@ public class SignupController {
     public ResponseBean<SignupBean> signup(@RequestBody SignupBean signupBean) {
         ResponseBean<SignupBean> resposne = new ResponseBean();
 
-        if(signupdao.getUserByEmail(signupBean.getEmail()) !=null)
-        {
-                resposne.setMsg("You Are Already Rgister");
-                resposne.setStatus(201);
-        }
-        else {
+        if (signupdao.getUserByEmail(signupBean.getEmail()) != null) {
+            resposne.setMsg("You Are Already Rgister");
+            resposne.setStatus(201);
+        } else {
 
             signupdao.signup(signupBean);
             resposne.setData(signupBean);
@@ -38,32 +36,29 @@ public class SignupController {
 
 
     @PostMapping("login")
-    public ResponseBean<SignupBean> userLogin(@RequestBody LoginBean loginBean)
-    {
-        SignupBean signupBean=null;
-        ResponseBean<SignupBean> responseBean =  new ResponseBean<>();
-        signupBean=signupdao.login(loginBean.getEmail(),loginBean.getPassword());
+    public ResponseBean<SignupBean> userLogin(@RequestBody LoginBean loginBean) {
+        SignupBean signupBean = null;
+        ResponseBean<SignupBean> responseBean = new ResponseBean<>();
+        signupBean = signupdao.login(loginBean.getEmail(), loginBean.getPassword());
 
-       if(signupBean !=null)
-       {
-           responseBean.setData(signupBean);
-           responseBean.setStatus(200);
-           responseBean.setMsg("User login");
-       }
-       else {
-           responseBean.setStatus(201);
-           responseBean.setMsg("User Not Found");
+        if (signupBean != null) {
+            responseBean.setData(signupBean);
+            responseBean.setStatus(200);
+            responseBean.setMsg("User login");
+        } else {
+            responseBean.setStatus(201);
+            responseBean.setMsg("User Not Found");
 
-       }
+        }
 
         return responseBean;
 
     }
+
     @GetMapping("Listuser")
-    public  ResponseBean<List<SignupBean>> listuser()
-    {
-        ResponseBean<List<SignupBean>> resposne= new ResponseBean<>();
-        List<SignupBean> signupbean=signupdao.listUser();
+    public ResponseBean<List<SignupBean>> listuser() {
+        ResponseBean<List<SignupBean>> resposne = new ResponseBean<>();
+        List<SignupBean> signupbean = signupdao.listUser();
 
         resposne.setData(signupbean);
         resposne.setMsg("User List");
