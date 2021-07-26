@@ -18,7 +18,7 @@ public class SignupController {
 
     @PostMapping("signup")
     public ResponseBean<SignupBean> signup(@RequestBody SignupBean signupBean) {
-        ResponseBean resposne = new ResponseBean();
+        ResponseBean<SignupBean> resposne = new ResponseBean();
 
         if(signupdao.getUserByEmail(signupBean.getEmail()) !=null)
         {
