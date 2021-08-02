@@ -50,7 +50,7 @@ public class HospitalController {
     }
 
 
-    @DeleteMapping("deleteHospital")
+    @DeleteMapping("deleteHospital/{hospitalid}")
     public ResponseBean<AddHospitalBean> deleteHospital(@PathVariable("hospitalid") int hospitalid) {
         ResponseBean<AddHospitalBean> response=new ResponseBean<>();
 
