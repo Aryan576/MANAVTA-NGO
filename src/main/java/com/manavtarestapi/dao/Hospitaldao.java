@@ -16,9 +16,9 @@ public class Hospitaldao {
     JdbcTemplate stmt;
 
     public void addHospital(AddHospitalBean addHospitalBean) {
-        stmt.update("insert into hospital (hospitalname,location, hospitaladdress, numberbeds,pincode,hospitalphonenumber,lat,log) values(?,?,?,?,?,?,?,?)",
+        stmt.update("insert into hospital (hospitalname,location, hospitaladdress, numberbeds,pincode,hospitalphonenumber,lat,log,availableoxygen) values(?,?,?,?,?,?,?,?,?)",
                 addHospitalBean.getHospitalname(), addHospitalBean.getLocation(), addHospitalBean.getHospitaladdress(), addHospitalBean.getNumberbeds()
-                , addHospitalBean.getPincode(), addHospitalBean.getHospitalphonenumber(), addHospitalBean.getLat(), addHospitalBean.getLog()
+                , addHospitalBean.getPincode(), addHospitalBean.getHospitalphonenumber(), addHospitalBean.getLat(), addHospitalBean.getLog(),addHospitalBean.getAvailableoxygen()
 
         );
 
@@ -32,8 +32,8 @@ public class Hospitaldao {
     }
 
     public AddHospitalBean updateHospital(AddHospitalBean addHospitalBean) {
-        stmt.update("update  hospital set  hospitalname=?,location=?, hospitaladdress=?, numberbeds=?,pincode=?,hospitalphonenumber=?,lat=?,log=? where hospitalid=?",
-                addHospitalBean.getHospitalname(),addHospitalBean.getLocation(), addHospitalBean.getHospitaladdress(), addHospitalBean.getNumberbeds(), addHospitalBean.getPincode(), addHospitalBean.getHospitalphonenumber(), addHospitalBean.getLat(), addHospitalBean.getLog(), addHospitalBean.getHospitalid());
+        stmt.update("update  hospital set  hospitalname=?,location=?, hospitaladdress=?, numberbeds=?,pincode=?,hospitalphonenumber=?,lat=?,log=?,availableoxygen=? where hospitalid=?",
+                addHospitalBean.getHospitalname(),addHospitalBean.getLocation(), addHospitalBean.getHospitaladdress(), addHospitalBean.getNumberbeds(), addHospitalBean.getPincode(), addHospitalBean.getHospitalphonenumber(), addHospitalBean.getLat(), addHospitalBean.getLog(),addHospitalBean.getAvailableoxygen(), addHospitalBean.getHospitalid());
             return addHospitalBean;
     }
 

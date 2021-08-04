@@ -5,7 +5,7 @@ import lombok.Data;
 
 @Data
 public class AddHospitalBean {
-    private  String hospitalname,location, hospitaladdress, numberbeds,pincode,hospitalphonenumber,lat,log;
+    private  String hospitalname,location, hospitaladdress, numberbeds,pincode,hospitalphonenumber,lat,log,availableoxygen;
     private int hospitalid;
 
 }
