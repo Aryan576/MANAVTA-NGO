@@ -5,7 +5,7 @@ import lombok.Data;
 @Data
 public class DonatePlasmaBean {
     private String name, age, gender, bloodgroup, weight,dateofcovidpositive,dateofcovidnegative,city,state,phonenumber ;
-        private String plasmaid;
+        private int plasmaid;
 
 
 }
