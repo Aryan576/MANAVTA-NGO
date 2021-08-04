@@ -41,7 +41,7 @@ public class DonatePlasmaController {
         return responese;
     }
 
-    @DeleteMapping("deleteplasma")
+    @DeleteMapping("deleteplasma/{plasmaid}")
     public ResponseBean<DonatePlasmaBean> deleteplasma(@PathVariable("plasmaid") int plasmaid) {
         ResponseBean<DonatePlasmaBean> response = new ResponseBean<>();
         DonatePlasmaBean donatePlasma = donatePlasmadao.deleteplasma(plasmaid);
